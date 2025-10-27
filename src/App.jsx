@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import LandingScreen from './screens/LandingScreen';
+import VictimModeFlow from './screens/VictimModeFlow';
+import DoctorModeFlow from './screens/DoctorModeFlow';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [appMode, setAppMode] = useState('landing'); // 'landing' | 'victim' | 'doctor'
+  const [language, setLanguage] = useState('en'); // 'en' | 'hi'
+
+  const renderMode = () => {
+    switch (appMode) {
+      case 'landing':
+        return (
+          <LandingScreen
+            onSelectMode={(mode) => setAppMode(mode)}
+            language={language}
+            onToggleLanguage={() => setLanguage(language === 'en' ? 'hi' : 'en')}
+          />
+        );
+
+      case 'victim':
+        return (
+          <VictimModeFlow
+            language={language}
+            onBack={() => setAppMode('landing')}
+          />
+        );
+
+      case 'doctor':
+        return (
+          <DoctorModeFlow
+            language={language}
+            onBack={() => setAppMode('landing')}
+          />
+        );
+
+      default:
+        return null;
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="min-h-screen bg-white">
+      {renderMode()}
+    </div>
+  );
 }
 
-export default App
+export default App;
