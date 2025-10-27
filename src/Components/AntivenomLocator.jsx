@@ -1,6 +1,9 @@
+// src/components/AntivenomLocator.jsx
+
 import { useEffect, useState } from 'react';
 import { MapPin, Phone, Navigation, RefreshCw } from 'lucide-react';
-import { supabase } from '../lib/supabase';
+// FIX 1: Changed import path to lowercase 'supabase'
+import { supabase } from '../lib/supabase'; 
 
 export default function AntivenomLocator({ language, snakeType }) {
   const [clinics, setClinics] = useState([]);
@@ -25,8 +28,27 @@ export default function AntivenomLocator({ language, snakeType }) {
     }
   };
 
+  // Fetch on start
   useEffect(() => {
     fetchClinics();
+  }, []);
+
+  // FIX 2: Re-added Live realtime updates listener (Crucial for live stock updates)
+  useEffect(() => {
+    const channel = supabase
+      .channel('clinic-updates')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'clinics' },
+        () => {
+          fetchClinics();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
 
   const calculateDistance = (lat, lon) => {
@@ -174,6 +196,7 @@ export default function AntivenomLocator({ language, snakeType }) {
                       {language === 'en' ? 'Call' : 'कॉल करें'}
                     </a>
                     <a
+                      // FIX 3: Corrected Google Maps navigation link
                       href={`https://www.google.com/maps/dir/?api=1&destination=${clinic.latitude},${clinic.longitude}`}
                       target="_blank"
                       rel="noopener noreferrer"

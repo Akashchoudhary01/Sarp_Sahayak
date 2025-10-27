@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import LandingScreen from './screens/LandingScreen';
-import VictimModeFlow from './screens/VictimModeFlow';
-import DoctorModeFlow from './screens/DoctorModeFlow';
+import LandingScreen from "./Pages/LandingScreen";
+import VictimModeFlow from "./Pages/VictimModeFlow";
+import DoctorModeFlow from "./Pages/DoctorModeFlow";
 
 function App() {
   const [appMode, setAppMode] = useState('landing'); // 'landing' | 'victim' | 'doctor'
