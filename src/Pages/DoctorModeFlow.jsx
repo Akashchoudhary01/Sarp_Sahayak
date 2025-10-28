@@ -1,7 +1,7 @@
 // src/pages/DoctorModeFlow.jsx
 
 import { useState } from 'react';
-import { ArrowLeft, AlertTriangle, CheckCircle } from 'lucide-react';
+import { ArrowLeft, AlertTriangle, CheckCircle, MapPin } from 'lucide-react';
 
 // NOTE: You must import the AntivenomLocator component to complete the flow.
 import AntivenomLocator from "../Components/AntivenomLocator"; 
@@ -24,7 +24,7 @@ export default function DoctorModeFlow({ language, onBack }) {
 
     // Data definitions
     const snakeOptions = [
-        { value: 'cobra', label: 'Cobra (Naja naja)', labelHi: 'कोबरा' },
+        { value: 'cobra', label: 'Cobra ', labelHi: 'कोबरा' },
         { value: 'krait', label: 'Krait (Bungarus)', labelHi: 'करैत' },
         { value: 'viper', label: "Viper (Russell's/Saw-scaled)", labelHi: 'वाइपर' },
         { value: 'non-venomous', label: 'Non-Venomous', labelHi: 'गैर-विषैला' },
