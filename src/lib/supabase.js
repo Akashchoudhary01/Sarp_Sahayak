@@ -2,10 +2,16 @@
 
 import { createClient } from '@supabase/supabase-js';
 
-// Access variables using the VITE standard (import.meta.env)
+const url = import.meta.env.VITE_SUPABASE_URL;
+const key = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+// TEMPORARY DEBUG: Check what value the app is reading for the key
+console.log('Supabase URL read:', url);
+console.log('Supabase Key read:', key); // WARNING: This exposes your key in the console!
+
 const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL, // Accesses the fixed VITE variable
-  import.meta.env.VITE_SUPABASE_ANON_KEY // Accesses the fixed VITE variable
+ url,
+ key
 );
 
 export { supabase };
