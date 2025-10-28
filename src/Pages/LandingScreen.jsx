@@ -9,9 +9,9 @@ export default function LandingScreen({
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-600 to-gray-900">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100">
       {/* ⭐️ NEW WRAPPER: Restricts the entire app width and centers it ⭐️ */}
-      <div className="max-w-xl w-full mx-auto flex-1 bg-gray-100 flex flex-col border-x border-gray-200 shadow-lg">
+      <div className="max-w-xl w-full mx-auto flex-1 flex flex-col border-x border-gray-200 shadow-lg">
         {/* ⭐️ HEADER MOVED INSIDE CONTAINER ⭐️ */}
         <header className="px-6 py-4 flex justify-between items-center bg-white border-b border-gray-200">
           <div className="text-2xl font-bold text-gray-800">Sarpa-Sahayak</div>
