@@ -115,23 +115,34 @@ export default function SnakeIdentificationScreen({ language }) {
 
           {/* Display Real AI Result */}
           {!analyzing && aiResult && !error && (
-            <div
-              className={`mt-4 p-4 rounded-lg 
+            <>
+              <div
+                className={`mt-4 p-4 rounded-lg 
         ${
           aiResult.venomous_level.includes("Highly")
             ? "bg-red-50 border-2 border-red-400"
             : "bg-green-50 border-2 border-green-400"
         }`}
-            >
-              <p className="font-bold text-gray-800">
-                {language === "en"
-                  ? `AI Result: ${aiResult.species} (${aiResult.venomous_level})`
-                  : `AI परिणाम: ${aiResult.species} (${aiResult.venomous_level})`}
-              </p>
-              <p className="text-sm text-gray-600 mt-1">
-                {getActionText(aiResult)}
-              </p>
-            </div>
+              >
+                <p className="font-bold text-gray-800">
+                  {language === "en"
+                    ? `AI Result: ${aiResult.species} (${aiResult.venomous_level})`
+                    : `AI परिणाम: ${aiResult.species} (${aiResult.venomous_level})`}
+                </p>
+                <p className="text-sm text-gray-600 mt-1">
+                  {getActionText(aiResult)}
+                </p>
+              </div>
+
+              {/* ⭐️ NEW CRITICAL WARNING LINE ⭐️ */}
+              <div className="mt-4 p-3 bg-yellow-100 border-2 border-yellow-500 rounded-lg">
+                <p className="font-bold text-yellow-800 text-sm">
+                  {language === "en"
+                    ? "⚠️ CRITICAL SAFETY NOTE: Do not rely solely on this AI result. Always treat unknown snakes with extreme caution."
+                    : "⚠️ महत्वपूर्ण सुरक्षा नोट: केवल इस AI परिणाम पर निर्भर न रहें। अज्ञात साँपों को हमेशा अत्यंत सावधानी से संभालें।"}
+                </p>
+              </div>
+            </>
           )}
 
           {/* Display Error Message */}
