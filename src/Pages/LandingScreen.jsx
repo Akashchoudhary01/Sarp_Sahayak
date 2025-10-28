@@ -13,11 +13,11 @@ export default function LandingScreen({
       {/* ⭐️ NEW WRAPPER: Restricts the entire app width and centers it ⭐️ */}
       <div className="max-w-xl w-full mx-auto flex-1 flex flex-col border-x border-gray-200 shadow-lg">
         {/* ⭐️ HEADER MOVED INSIDE CONTAINER ⭐️ */}
-        <header className="px-6 py-4 flex justify-between items-center bg-white border-b border-gray-200">
-          <div className="text-2xl font-bold text-gray-800">Sarpa-Sahayak</div>
+        <header className="px-6 py-4 flex justify-between items-center bg-white border-b border-black">
+          <div className="text-2xl font-bold text-gray-800 ">Sarpa-Sahayak</div>
           <button
             onClick={onToggleLanguage}
-            className="text-sm font-semibold text-gray-700 px-3 py-1 border-2 border-gray-700 rounded"
+            className="text-sm font-semibold text-gray-700 px-3 py-1 border-2 border-black rounded"
           >
             {language === "en" ? "हिन्दी" : "ENG"}
           </button>
@@ -25,7 +25,7 @@ export default function LandingScreen({
 
         <main className="flex-1 flex flex-col justify-center px-6 pb-20">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-800 mb-4">
+            <h1 className="text-4xl mt-5 font-bold text-gray-800 mb-4">
               {language === "en"
                 ? "Save Time, Save a Life."
                 : "समय बचाओ, जान बचाओ।"}
@@ -69,7 +69,7 @@ export default function LandingScreen({
             </button>
           </div>
 
-          <div className="mt-12 text-center text-sm text-gray-500">
+          <div className="mt-12 text-center text-xl text-gray-500">
             <p>
               {language === "en"
                 ? "Developed for immediate snakebite response"
@@ -79,8 +79,8 @@ export default function LandingScreen({
         </main>
 
         {/* FOOTER MOVED INSIDE CONTAINER */}
-        <footer className="w-full py-4 bg-gray-200 text-center text-xs text-gray-600 border-t border-gray-300">
-          <p className="mb-1">Made with ❤️ by **Team Gridlock**</p>
+        <footer className="w-full py-4 bg-gray-200 text-center text-md text-gray-600 border-t border-black">
+          <p className="mb-1 ">Made with ❤️ by *Team DevX*</p>
           <p>&copy; {currentYear} All Rights Reserved. Sarpa-Sahayak</p>
         </footer>
       </div>{" "}
