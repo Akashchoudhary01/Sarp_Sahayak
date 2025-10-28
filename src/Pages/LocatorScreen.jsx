@@ -27,12 +27,10 @@ export default function AntivenomLocator({ language, snakeType }) {
     }
   };
 
-  // Fetch on start
   useEffect(() => {
     fetchClinics();
   }, []);
 
-  // Live realtime updates listener
   useEffect(() => {
     const channel = supabase
       .channel("clinic-updates")
@@ -95,8 +93,7 @@ export default function AntivenomLocator({ language, snakeType }) {
   });
 
   return (
-    // UI FIX: Removed h-screen to allow full vertical scrolling if needed
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen pb-24">
       {/* Map Header Section */}
       <div className="relative bg-gray-200 h-52 flex items-center justify-center border-b-2 border-gray-300">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-400"></div>
@@ -143,8 +140,7 @@ export default function AntivenomLocator({ language, snakeType }) {
       </div>
 
       {/* Clinics List Section */}
-      {/* UI FIX: Added pb-[100px] to ensure the last card isn't hidden by the fixed footer */}
-      <div className="flex-1 overflow-y-auto px-6 py-6 pb-[100px]">
+      <div className="flex-1 overflow-y-auto px-6 py-6 pb-[140px]">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-bold text-gray-800">
             {language === "en" ? "Nearby Hospitals" : "निकटवर्ती अस्पताल"}
@@ -220,7 +216,9 @@ export default function AntivenomLocator({ language, snakeType }) {
                         {clinic.antivenom_stock}
                       </span>
                       <span className="text-sm text-gray-600 ml-2">
-                        {language === "en" ? "vials available" : "शीशी उपलब्ध"}
+                        {language === "en"
+                          ? "vials available"
+                          : "शीशी उपलब्ध"}
                       </span>
                     </div>
                     <p className="text-xs text-gray-500 mt-1">
@@ -256,9 +254,8 @@ export default function AntivenomLocator({ language, snakeType }) {
         )}
       </div>
 
-      {/* Emergency Helpline Footer Section */}
-      {/* UI FIX: Added fixed bottom-0 z-50 w-full to place it at the absolute bottom */}
-      <div className="fixed bottom-0 z-50 w-full bg-red-600 text-white p-4 text-center shadow-2xl">
+      {/* Emergency Helpline Footer */}
+      <div className="sticky bottom-0 z-50 w-full bg-red-600 text-white text-center shadow-2xl py-2">
         <p className="font-bold text-lg mb-1">
           {language === "en"
             ? "🚨 Emergency Helpline"
